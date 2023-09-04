@@ -1,0 +1,84 @@
+<!-- Heredar de la plantilla base -->
+{% extends 'base/base.html' %}
+
+<!-- Cargar archivos estáticos -->
+{% load static %}
+
+<!-- Bloque css -->
+<!-- Estilo 1 -->
+{% block css %}
+<link href="{% static 'user/css/style_user.css' %}" rel="stylesheet" type="text/css" />
+<!-- Estilo 2 -->
+<link rel="stylesheet" href="{% static 'manage_post/categories/css/article_category.css' %}"/>
+{% endblock css %}
+<!-- Cerrar bloque css -->
+<!-- Bloque título --><!-- Cerrar bloque de título -->
+{% block title %} Ver Perfil {% endblock title %}
+
+<!-- Bloque de contenido -->
+{% block content %}
+<!-- Inicio de la condición 1-->
+<div class="description-profile">
+    <div class="image-profile">
+        <!-- Imagen del perfil del usuario -->
+        <img src="{{ request.user.profile.photo.url }}" alt="">
+    </div>
+    <div class="body-description-profile">
+        <p>Nombre Completo: {{ request.user.profile.full_name }}</p>
+        <p>Profesion: {{ request.user.profile.profession }}</p>
+        <p>Sobre mi: {{ request.user.profile.about }}</p>
+        <div class="extra">
+            <!-- Enlaces de las redes sociales -->
+            <a href="{{ request.user.profile.facebook }}" target="_blank" class="social">Facebook</a>
+            <a href="{{ request.user.profile.twitter }}" target="_blank" class="social">Twitter</a>
+            <a href="{{ request.user.profile.linkedin }}" target="_blank" class="social">Linkedin</a>
+        </div>
+    </div>
+</div>
+<hr>
+
+<!-- Mostrar las publicaciones de los usuarios -->
+<!-- Inicio de condición de artículos -->
+{% if post %}
+<div class="text-primary">
+    <h2>PUBLICACIONES</h2>
+</div>
+
+<div class="article-container">
+    <!-- Recorrer los artículos -->
+    <!-- Inicio de ciclo for -->
+    {% for article in post %}
+    <article class="article-container">
+    <!-- Imagen del artículo -->
+       <img src="{{ article.image.url }}" alt="" class="img">
+       <div class="card-body">
+        <!-- Título del artículo -->
+           <a href="{% url 'post' article.slug %}">
+               <h2 class="title">{{ article.title|truncatewords:"11" }}</h2>
+           </a>
+           <!-- Introducción -->
+           <p class="introduction">{{ article.introduction|truncatewords:"20" }}</p>
+       </div>
+    </article>
+    {% endfor %}
+    <!-- Fin del ciclo for -->
+</div>
+<!-- Fin de condición de artículo -->
+{% endif %}
+
+<!-- Si no se cumple la condición 1-->
+{% if user.profile %}
+{% else%}
+<!-- Inicio de condición 2 -->
+{% if request.user == user %}
+<h2 class="alert-session">Usted no tiene ningún perfil, <a href="{% url 'edit_user' %}">Clic aquí</a> para crear uno nuevo</h2>
+<!-- Si no se cumple la condición 2-->
+{% else %}
+<h2>El usuario no ha creado un perfil</h2>
+<!-- Fin de condición 2 -->
+{% endif %}
+<!-- Fin de condición 1 -->
+{% endif %}
+
+<!-- Cerrar bloque de contenido -->
+{% endblock content %}
