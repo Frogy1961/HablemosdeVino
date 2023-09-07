@@ -17,9 +17,9 @@ class Profile(models.Model):
     profession = models.CharField(max_length=50, null=True)
     about = models.TextField(null=True)
     birthday = models.DateField(null=True)
-    twitter = models.URLField(max_length=50, null=True)
-    linkedin = models.URLField(max_length=50, null=True)
-    facebook = models.URLField(max_length=50, null=True)
+    twitter = models.URLField(max_length=50, null=True, blank=True)
+    linkedin = models.URLField(max_length=50, null=True, blank=True)
+    facebook = models.URLField(max_length=50, null=True, blank= True)
 
     def __str__(self):
         return self.user.username

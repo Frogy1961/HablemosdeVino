@@ -1,0 +1,76 @@
+html, body, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    font-weight: normal;
+   }
+   table { border-collapse: collapse; border-spacing: 0; }
+   td, th, caption { font-weight: normal; text-align: left; }
+   img, fieldset { border: 0; }
+   ol { padding-left: 1.4em; list-style: decimal; }
+   ul { padding-left: 1.4em; list-style:square; }
+   q:before, q:after { content:''; }
+
+   @font-face {
+    font-family: 'MiFuente';
+    src: url('../fonts/Indie_Flower/IndieFlower-Regular.ttf') format('truetype');
+   }
+
+   body {
+    font-family: 'MiFuente';
+    font-size: 1.1em;
+   }
+
+   #portada {
+    background-color: rgb(246, 238, 227);
+   }
+   
+  #nosotros h3{
+    font-size: 2em;
+    font-weight: bolder;
+    color: black;
+    text-shadow: 0px 0px rgb(114, 112, 112);
+  }
+
+  #blog {
+    background-color: rgb(246, 238, 227);
+  }
+
+  #blog img:hover {
+    -webkit-transform: scale(1.05);
+  }
+
+  #blog h3{
+    color: black;
+    text-shadow: 0px 0px rgb(114, 112, 112);
+  }
+
+  #footer {
+    background: white
+    
+  }
+
+  #footer h3{
+    color: black;
+    text-shadow: 0px 0px rgb(114, 112, 112);
+  }
+
+  #footer p{
+    color: black;
+  }
+
+  #footer ul li a:hover, ul li .active a {
+    color: #c10538 !important;
+  }
+
+  #redes a {
+    color: black !important;
+  }
+
+  #redes a:hover, a.active a {
+    color: #c10538 !important;
+  }
+
+  .bi {
+    font-size: 1.5em;
+  }
