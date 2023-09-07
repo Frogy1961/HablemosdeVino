@@ -2,9 +2,68 @@
 {% load static %}
 
 <header class="header">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <!-- Icono -->  
+              <a class="navbar-brand" href="#">
+                <img src="{% static 'base/image/Logo/Blog Vinos Logo.png' %}" alt="img" style="width: 70px;height: 70px;">
+                <span style="font-size: 0.9vw;"></span>
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Nosotros</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Bolg
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Vinos</a></li>
+                      <li><a class="dropdown-item" href="#">Maridajes</a></li>
+                      <li><a class="dropdown-item" href="#">Donde comer</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                  </li>
+                </ul>
+                {% if request.user.is_authenticated %}
+                <div class="d-flex ms-2">
+                  <!-- Imagen del usuario -->
+                  <img src="{{ request.user.profile.photo.url }}" alt="Profile" style="width: 40px;">
+                </div>
+                <div class="d-flex ms-2">
+                  <button class="btn btn-outline-dark" type="submit">Perfil</button>
+                </div>
+                <div class="d-flex ms-2">
+                  <button class="btn btn-outline-dark" type="submit">Salir</button>
+                </div>
+                {% else %}
+                <div class="d-flex ms-2">
+                  <button class="btn btn-outline-dark" type="submit">Inicio</button>
+                </div>
+                <div class="d-flex ms-2">
+                  <button class="btn btn-outline-dark" type="submit">Registro</button>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </nav>
+    </div>  
+
+
+<!--    
     <div class="menu">
         <div class="logo">
-            <!--Logo-->
+            <!--Logo
             <a href="{% url 'index' %}"><img src="{% static 'base/image/Logo/abc_company.png' %}" alt="Logo"></a>
         </div>
         <nav class="nav">
@@ -13,7 +72,7 @@
             <ul class="profile">
 
                 <li>
-                    <!-- Imagen del usuario -->
+                    <!-- Imagen del usuario 
                     {% if request.user.profile.photo %}
                     <img src="{{ request.user.profile.photo.url }}" alt="Profile"
                          class="img-profile">
@@ -21,21 +80,21 @@
                     <img src="{% static 'base/image/Default/default-user.png' %}" alt="Profile"
                          class="img-profile">
                     {% endif %}
-                    <!-- Nombre completo del usuario -->
+                    <!-- Nombre completo del usuario 
                         <span class="name-user">{{ request.user.full_name }}</span>
                 </li>
 
-                <!-- Botón de editar perfil -->
+                <!-- Botón de editar perfil 
                 <li>
                     <a href="{% url 'edit_user' %}" class="btn-edit-profile">Editar perfil</a>
                 </li>
-                <!-- Verificar si el usuario es staff -->
+                <!-- Verificar si el usuario es staff 
                 {% if request.user.is_staff == True %}
                 <li>
                     <a href="{% url 'admin:index' %}" class="btn-admin">Ir al admin</a>
                 </li>
                 {% endif %}
-                <!-- Botón de salir -->
+                <!-- Botón de salir 
                 <li>
                     <a href="{% url 'logout' %}" class="loguot">Salir</a>
                 </li>
@@ -58,5 +117,5 @@
             </ul>
             {% endif %}
         </nav>
-    </div>
+    </div> -->
 </header>
