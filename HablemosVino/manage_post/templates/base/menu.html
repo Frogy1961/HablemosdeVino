@@ -38,21 +38,42 @@
                 {% if request.user.is_authenticated %}
                 <div class="d-flex ms-2">
                   <!-- Imagen del usuario -->
-                  <img src="{{ request.user.profile.photo.url }}" alt="Profile" style="width: 40px;">
+                  {% if request.user.profile.photo %}
+                  <img src="{{ request.user.profile.photo.url }}" alt="Profile" style="width: 40px;padding-right: 10px;">
+                  {% else %}
+                  <img src="{% static 'base/image/Default/default-user.png' %}" alt="Profile" style="width: 50px;">
+                  {% endif %}
+                  <span style="position: relative;top: 13px;">{{ request.user.full_name }}</span>
                 </div>
                 <div class="d-flex ms-2">
-                  <button class="btn btn-outline-dark" type="submit">Perfil</button>
+                  <a href="{% url 'edit_user' %}" class="btn btn-outline-dark" type="submit">Perfil</a>
                 </div>
                 <div class="d-flex ms-2">
-                  <button class="btn btn-outline-dark" type="submit">Salir</button>
+                  <a href="{% url 'admin:index' %}" class="btn btn-outline-dark" type="submit">Ir al Admin</a>
+                </div>
+                <div class="d-flex ms-2">
+                  <a href="{% url 'logout' %}" class="btn btn-outline-dark" type="submit">Salir</a>
                 </div>
                 {% else %}
-                <div class="d-flex ms-2">
-                  <button class="btn btn-outline-dark" type="submit">Inicio</button>
-                </div>
-                <div class="d-flex ms-2">
-                  <button class="btn btn-outline-dark" type="submit">Registro</button>
-                </div>
+                  {% url 'login' as url_login %}
+                  {% url 'register' as url_register %}
+
+                  {% if request.path == url_register %}
+                  <div class="d-flex ms-2">
+                    <a href="{% url 'login' %}" class="btn btn-outline-dark" type="submit">Iniciar sesión</a>
+                  </div>
+                  {% elif request.path == url_login %}
+                  <div class="d-flex ms-2">
+                    <a href="{% url 'register' %}" class="btn btn-outline-dark" type="submit">Registro</a>
+                  </div>
+                  {% else %}
+                  <div class="d-flex ms-2">
+                    <a href="{% url 'login' %}" class="btn btn-outline-dark" type="submit">Iniciar sesión</a>
+                  </div>
+                  <div class="d-flex ms-2">
+                    <a href="{% url 'register' %}" class="btn btn-outline-dark" type="submit">Registro</a>
+                  </div>
+                  {% endif %}
                 {% endif %}
               </div>
             </div>
