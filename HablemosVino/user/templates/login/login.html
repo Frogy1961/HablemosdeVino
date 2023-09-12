@@ -27,11 +27,13 @@
             {{ form.as_table }}
         </table>
         <!-- Rderigir a olvidar la contraseña -->
-        <a href="{% url 'password_reset' %} " class="reset_password">Has olvidado la contraseña?</a>
-        <input type="submit" value="Ingresar" class="btn-submit input-login">
+        <a href="{% url 'password_reset' %} " class="reset_password text-dark" style="margin-top: 20px; ">Has olvidado la contraseña?</a>
+        <input type="submit" value="Ingresar" class="btn btn-dark" style="width: 50%; margin-bottom: 20px;">
     </form>
 </div>
 {% endif %}
+
+{% include 'base/footer.html' %}
 
 {% endblock content %}
 

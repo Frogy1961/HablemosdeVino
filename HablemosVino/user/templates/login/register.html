@@ -26,10 +26,12 @@
             {{ form.as_table }}
         </table>
         <!-- Asignar valor al input -->
-        <input type="submit" value="Registrarse" class="btn-submit">
+        <input type="submit" value="Registrarse" class="btn btn-dark" style="width: 50%; margin-top: 10px;margin-bottom: 10px;">
     </form>
 </div>
 {% endif %}
+
+{% include 'base/footer.html' %}
 
 {% endblock content %}
 
