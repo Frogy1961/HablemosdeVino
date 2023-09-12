@@ -6,4 +6,5 @@ urlpatterns = [
     path('category/<slug:slug>', views.CategoryDetailView.as_view(), name='category_detail'),
     path('categories/', views.ListAllCategoriesView.as_view(), name='all_categories'),
     path('articles/<slug:slug>', views.ShowPostDetailView.as_view(), name='post'),
+    path('indice/', views.IndiceView.as_view(), name='indice'),
 ]

@@ -1,15 +1,16 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView,TemplateView
 from django.views.generic.edit import FormMixin
 from manage_post.models import Article, Category
 from manage_post.forms import CommentForm
 from django.contrib.auth import get_user_model
+
 User = get_user_model()
 
 # Create your views here.
-class IndexView(ListView):
+class IndiceView(ListView):
     model = Article
-    template_name = 'manage_post/index.html'
+    template_name = 'manage_post/indice.html'
 
     def get_context_data(self,  **kwargs):
         context = super().get_context_data(**kwargs)
@@ -65,3 +66,10 @@ class ShowPostDetailView(FormMixin, DetailView):
 
     def get_success_url(self):
         return reverse_lazy('post', kwargs={'slug': self.kwargs['slug']})
+    
+class IndexView(TemplateView):
+  
+    template_name = 'manage_post/index.html'
+
+    def home():
+        pass
