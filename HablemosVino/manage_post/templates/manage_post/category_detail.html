@@ -6,8 +6,8 @@
 
 <!-- Bloque css -->
 {% block css %}
-<link rel="stylesheet" href="{% static 'manage_post/categories/css/article_category.css' %}">
-{% endblock css %}
+<link rel="stylesheet" href="#">
+{% endblock css %} 
 
 <!-- Bloque título -->
 {% block title %} {{ category.name }} {% endblock title %}
@@ -19,23 +19,36 @@
 {% include 'manage_post/navbar_category.html' %}
 
 <div class="text-primary">
-    <h2>{{ category.name|upper }}</h2>
+    <h2 style="text-align: center;padding-top: 20px;font-size: 2.5rem;color: black;">{{ category.name|upper }}</h2>
 </div>
 
 <div class="article-container">
     <!-- Listar artículos -->
     {% for article in articles %}
-    <article class="article">
-        <!-- Imagen del artículo -->
+    <div class="col-lg-4 col-md-4 col-sm-12 ps-5">
+        <div class="d-flex pt-5 pb-5">
+          <div class="card" style="width: 18rem;">
+            <img src="{{ article.image.url }}" class="card-img-top" alt="img">
+            <div class="card-body">
+              <h5 style="font-size: 1.3rem;font-weight: bold;text-align: center;" class="card-title">{{ article.title|truncatewords:13 }}</h5>
+              <p class="card-text">{{ article.introduction|truncatewords:25 }}</p>
+              <a href="{% url 'post' article.slug %}" class="btn btn-warning">Aprende más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- <article class="article">
+        <!-- Imagen del artículo 
         <img src="{{ article.image.url }}" alt="" class="img">
         <div class="card-body">
-            <!-- Identificador del artículo -->
+            <!-- Identificador del artículo 
             <a href="{% url 'post' article.slug %}">
                 <h2 class="title">{{ article.title|truncatewords:13 }}</h2>
             </a>
             <p class="introduction">{{ article.introduction|truncatewords:25 }}</p>
         </div>
-    </article>
+    </article> -->
     {% endfor %}
 </div>
 {% endblock content %}

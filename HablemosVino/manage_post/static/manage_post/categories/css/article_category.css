@@ -24,7 +24,7 @@
 }
 
 .category-container a:hover {
-    color: #2B4F95;
+    color: #090909;
 }
 
 .nav-item {
@@ -115,7 +115,7 @@
     line-height: 1.4;
     font-size: 0.88em;
     font-weight: bold;
-    color: #2b4f95;
+    color: black;
     margin-bottom: 15px;
 }
 
@@ -123,13 +123,14 @@
     font-size: 0.82em;
     width: 100%;
     line-height: 1.6;
-    text-align: justify;
+    text-align: center;
     color: #343a40;
     margin-bottom: 10px;
 }
 
 .article .card-body .title:hover {
     text-decoration: underline;
+    text-decoration-color: black;
 }
 
 /* Listar todas las categorias  */

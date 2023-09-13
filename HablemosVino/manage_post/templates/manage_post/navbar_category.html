@@ -1,21 +1,52 @@
-<div class="category-container">
+<style>
+  a.estilo {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover, a.active a {
+    color: darkmagenta !important;
+  }  
+  
+</style>
+
+<div style="padding-top: 10px; margin: auto;width: 70%;" class="category-container">
     <ul>
 
-        <!-- Redirigir al index -->
-        <li class="nav-item {% if request.path == '/' %} active {% endif %}"><a href="{% url 'index' %}">Todo</a></li>
-
+        <!-- Redirigir al index
+        <li class="nav-item {% if request.path == '/' %} active {% endif %}"><a href="{% url 'index' %}"></a></li>
+        -->
         <!-- Listar categorías destacadas -->
-        {% for category in navbar_category %}
+        <nav  class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{% url 'indice' %}">Todos</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  {% for category in navbar_category %}
+                  {% url 'category_detail' category.slug as the_url %}
+                  <li  style="padding-left: 20px;" class="nav-item {% if request.path == the_url %} active {% endif %}">
+                        <p><a class= "estilo"  href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></p>
+                  </li> 
+                  {% endfor %} 
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+
+        <!--{% for category in navbar_category %}
         {% url 'category_detail' category.slug as the_url %}
         <li class="nav-item {% if request.path == the_url %} active {% endif %}">
             <a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>
         </li>
-        {% endfor %}
+        {% endfor %} -->
 
-        <!-- Listar todas las categorías -->
+        <!-- Listar todas las categorías
         <li class="nav-item ">
             <a href="{% url 'all_categories' %}">Todas las categorias</a>
-        </li>
+        </li> -->
 
     </ul>
 </div>
