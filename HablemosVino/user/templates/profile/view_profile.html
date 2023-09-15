@@ -7,9 +7,20 @@
 <!-- Bloque css -->
 <!-- Estilo 1 -->
 {% block css %}
-<link href="{% static 'user/css/style_user.css' %}" rel="stylesheet" type="text/css" />
+<link href="#" rel="stylesheet" type="text/css" />
 <!-- Estilo 2 -->
-<link rel="stylesheet" href="{% static 'manage_post/categories/css/article_category.css' %}"/>
+<link rel="stylesheet" href="#"/>
+<style>
+  #redes a.estilo {
+    text-decoration: none;
+    color: gray;
+  }
+  #redes a:hover, a.active a {
+    color: black !important;
+    text-decoration: underline !important;
+  }  
+  
+</style>
 {% endblock css %}
 <!-- Cerrar bloque css -->
 <!-- Bloque título --><!-- Cerrar bloque de título -->
@@ -18,20 +29,20 @@
 <!-- Bloque de contenido -->
 {% block content %}
 <!-- Inicio de la condición 1-->
-<div class="description-profile">
+<div class="d-flex">
     <div class="image-profile">
         <!-- Imagen del perfil del usuario -->
-        <img src="{{ request.user.profile.photo.url }}" alt="">
+        <img style="width: 9rem; height: 9rem;margin-left: 25px;margin-top: 10px;" src="{{ request.user.profile.photo.url }}" alt="">
     </div>
-    <div class="body-description-profile">
+    <div style="padding-left: 15px;padding-top: 15px;"  class="body-description-profile">
         <p>Nombre Completo: {{ request.user.profile.full_name }}</p>
         <p>Profesion: {{ request.user.profile.profession }}</p>
         <p>Sobre mi: {{ request.user.profile.about }}</p>
-        <div class="extra">
+        <div id="redes">
             <!-- Enlaces de las redes sociales -->
-            <a href="{{ request.user.profile.facebook }}" target="_blank" class="social">Facebook</a>
-            <a href="{{ request.user.profile.twitter }}" target="_blank" class="social">Twitter</a>
-            <a href="{{ request.user.profile.linkedin }}" target="_blank" class="social">Linkedin</a>
+            <a style="text-decoration: none;" href="{{ request.user.profile.facebook }}" target="_blank" class="social">Facebook</a>
+            <a style="text-decoration: none; " href="{{ request.user.profile.twitter }}" target="_blank" class="social">Twitter</a>
+            <a style="text-decoration: none;" href="{{ request.user.profile.linkedin }}" target="_blank" class="social">Linkedin</a>
         </div>
     </div>
 </div>
@@ -41,25 +52,25 @@
 <!-- Inicio de condición de artículos -->
 {% if post %}
 <div class="text-primary">
-    <h2>PUBLICACIONES</h2>
+    <h2 style="text-align: center;padding-top: 20px;font-size: 2.5rem;color: black;">PUBLICACIONES</h2>
 </div>
 
 <div class="article-container">
     <!-- Recorrer los artículos -->
     <!-- Inicio de ciclo for -->
     {% for article in post %}
-    <article class="article-container">
-    <!-- Imagen del artículo -->
-       <img src="{{ article.image.url }}" alt="" class="img">
-       <div class="card-body">
-        <!-- Título del artículo -->
-           <a href="{% url 'post' article.slug %}">
-               <h2 class="title">{{ article.title|truncatewords:"11" }}</h2>
-           </a>
-           <!-- Introducción -->
-           <p class="introduction">{{ article.introduction|truncatewords:"20" }}</p>
-       </div>
-    </article>
+    <div class="col-lg-4 col-md-4 col-sm-12 ps-5">
+        <div class="d-flex pt-5 pb-5">
+          <div class="card" style="width: 18rem;">
+            <img src="{{ article.image.url }}" class="card-img-top" alt="img">
+            <div class="card-body">
+              <h5 style="font-size: 1.3rem;font-weight: bold;text-align: center;" class="card-title">{{ article.title|truncatewords:13 }}</h5>
+              <p class="card-text">{{ article.introduction|truncatewords:25 }}</p>
+              <a href="{% url 'post' article.slug %}" class="btn btn-warning">Aprende más</a>
+            </div>
+          </div>
+        </div>
+      </div>
     {% endfor %}
     <!-- Fin del ciclo for -->
 </div>

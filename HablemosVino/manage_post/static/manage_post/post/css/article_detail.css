@@ -32,16 +32,16 @@
 .content-post .post-author span {
     margin-top: 12px;
     margin-left: 10px;
-    color: #1d448e;
+    color: darkmagenta;
 }
 
 .content-post .post-author span>a{
-    color: #1d448e;
+    color: darkmagenta;
 }
 
 .content-post .post-author span>a:hover{
-    text-decoration: underline;
-    color: #1d448e;
+    text-decoration: none;
+    color: darkmagenta;
 }
 
 .content-post .post-image {

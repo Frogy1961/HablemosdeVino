@@ -10,12 +10,12 @@
     <form method="POST" class="form-general comments">
         <!-- Agregar token -->
         {% csrf_token %}
-        <ul>
+        <ul style="list-style-type: none;">
             <!-- Obtener formulario  -->
             {{ form.as_ul }}
         </ul>
 
         <!-- Asignar valor al input -->
-        <input type="submit" value="Comentar" class="btn-submit btn-comment">
+        <input type="submit" value="Comentar" style="margin-bottom: 10px;" class="btn btn-dark">
     </form>
 </div>

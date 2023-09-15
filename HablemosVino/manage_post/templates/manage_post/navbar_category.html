@@ -1,15 +1,18 @@
+
 <style>
-  a.estilo {
+  .estilo ul li p a {
     text-decoration: none;
-    color: black;
+    color: grey;
   }
-  a:hover, a.active a {
-    color: darkmagenta !important;
+  .estilo ul li p a:hover {
+    color: black !important;
   }  
   
-</style>
+</style> 
+
 
 <div style="padding-top: 10px; margin: auto;width: 70%;" class="category-container">
+ 
     <ul>
 
         <!-- Redirigir al index
@@ -22,12 +25,12 @@
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
+              <div class="collapse navbar-collapse estilo" id="navbarNav">
                 <ul class="navbar-nav">
                   {% for category in navbar_category %}
                   {% url 'category_detail' category.slug as the_url %}
                   <li  style="padding-left: 20px;" class="nav-item {% if request.path == the_url %} active {% endif %}">
-                        <p><a class= "estilo"  href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></p>
+                        <p><a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a></p>
                   </li> 
                   {% endfor %} 
                 </ul>

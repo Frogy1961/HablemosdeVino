@@ -7,6 +7,16 @@
 <!-- Bloque css -->
 {% block css %}
 <link rel="stylesheet" href="{% static 'manage_post/post/css/article_detail.css' %}">
+<style>
+  span a.estilo {
+    text-decoration: none;
+    color: grey !important;
+  }
+  span a:hover, a.active a {
+    color: black !important;
+  }  
+  
+</style> 
 {% endblock css %}
 
 <!-- Bloque título -->
@@ -20,17 +30,18 @@
         <h2>{{ article.title }}</h2>
     </div>
     <div class="post-introduction line">
-        <p{{ article.introduction }}</p>
+        <p>{{ article.introduction }}</p>
     </div>
     <div class="post-author line">
+        <!-- Redirigir al perfil del autor -->
+        <span style="color: black;">Autor: <a class="estilo" href="{% url 'view_profile' article.user_id.pk %}">{{ article.user_id.full_name }}</a></span>
         <!-- Imagen del autor del artículo -->
         {% if article.user_id.profile %}
-        <img src="{{ article.user_id.profile.photo.url }}" class="img-author" alt="Autor Post">
+        <img src="{{ article.user_id.profile.photo.url }}" class="img-author" style="width: 3rem;height: 3rem; padding-left: 10px;" alt="Autor Post">
         {% else %}
-        <img src="{% static 'base/image/Default/default-user.png' %}" class="img-author" alt="Autor Post">
+        <img src="{% static 'base/image/Default/default-user.png' %}" style="width: 40px;padding-left: 10px;" class="img-author" alt="Autor Post">
         {% endif %}
-        <!-- Redirigir al perfil del autor -->
-        <span>Autor: <a href="{% url 'view_profile' article.user_id.pk %}">{{ article.user_id.full_name }}</a></span>
+        
     </div>
     <hr>
     <div class="post-image">
@@ -44,7 +55,7 @@
 </div>
 
 <!-- Comentarios -->
-<h2 class="text-primary">Comentarios:</h2>
+<h2 style="margin-left: 20%;font-size: 1.3rem;font-weight: bold;">Comentarios:</h2>
 
 <!-- Incluir agregar comentarios -->
 {% if request.user.is_authenticated %}
