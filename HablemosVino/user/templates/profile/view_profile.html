@@ -55,7 +55,8 @@
     <h2 style="text-align: center;padding-top: 20px;font-size: 2.5rem;color: black;">PUBLICACIONES</h2>
 </div>
 
-<div class="article-container">
+<div class="container-fluid">
+  <div class="row">  
     <!-- Recorrer los artículos -->
     <!-- Inicio de ciclo for -->
     {% for article in post %}
@@ -72,6 +73,7 @@
         </div>
       </div>
     {% endfor %}
+  </div>  
     <!-- Fin del ciclo for -->
 </div>
 <!-- Fin de condición de artículo -->

@@ -27,7 +27,8 @@
     </div>
 </div>
 
-<div class="article-container">
+<div class="container-fluid">
+  <div class="row">
     <!-- Listar artículos -->
     {% for article in articles %}
     <div class="col-lg-4 col-md-4 col-sm-12 ps-5">
@@ -54,5 +55,6 @@
         </div>
     </article> -->
     {% endfor %}
+  </div>  
 </div>
 {% endblock content %}
