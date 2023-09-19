@@ -43,42 +43,24 @@
           <div class="container-fluid pt-3">
             <h3 class="fs-2 text-center">Destacados</h3>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-12 ps-5">
-            <div class="d-flex pt-5 pb-5">
-              <div class="card" style="width: 18rem;">
-                <img src="{% static 'base/image/index/Vinos 500X500.png' %}" class="card-img-top" alt="img">
-                <div class="card-body">
-                  <h5 class="card-title">Vinos</h5>
-                  <p class="card-text">Aquí apareceran las recomendaciones de los socios para etiquetas que hayan probado y nos compartan sus ...</p>
-                  <a href="#" class="btn btn-warning">Aprende más</a>
+        <div class="container-fluid">
+          <div class="row">
+            {% for article in destacados %}
+            <div class="col-lg-4 col-md-4 col-sm-12 ps-5">
+              <div class="d-flex pt-5 pb-5">
+                <div class="card" style="width: 18rem;">
+                  <img src="{{ article.image.url }}" style="max-width: 300px;max-height: 300px;" class="card-img-top" alt="img">
+                  <div class="card-body">
+                    <h5 style="font-size: 1.3rem;font-weight: bold;text-align: center;" class="card-title">{{ article.title|truncatewords:13 }}</h5>
+                    <p class="card-text">{{ article.introduction|truncatewords:20 }}</p>
+                      <a href="{% url 'post' article.slug %}" class="btn btn-warning">Aprende más</a>
+                  </div>
                 </div>
               </div>
             </div>
+            {% endfor %}
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-12 ps-5">
-            <div class="d-flex pt-5 pb-5">
-              <div class="card" style="width: 18rem;">
-                <img src="{% static 'base/image/index/Maridaje 500X500.png' %}" class="card-img-top" alt="img">
-                <div class="card-body">
-                  <h5 class="card-title">Maridajes</h5>
-                  <p class="card-text">Todos tenemos nuestros secretos a la hora de combinar el vino y la comida, aquí nos enteraremos de los mejores ...</p>
-                  <a href="#" class="btn btn-warning">Aprende más</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-12 ps-5">
-            <div class="d-flex pt-5 pb-5">
-              <div class="card" style="width: 18rem;">
-                <img src="{% static 'base/image/index/Restaurante 500X500.png' %}" class="card-img-top" alt="img">
-                <div class="card-body">
-                  <h5 class="card-title">Restaurantes</h5>
-                  <p class="card-text">A los amantes del buen comer nos encanta recomendar nuestros lugares favoritos, que mejor regalo a quien visíte tu ciudad ...</p>
-                  <a href="#" class="btn btn-warning">Aprende más</a>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
           <div class="container ms-2 text-center pb-5">
             <a href="{% url 'indice' %}" class="btn btn-dark" type="submit">Descubre todas las recomendaciones</a>
           </div>
@@ -208,10 +190,10 @@
 
         <div class="col-lg-4 mb-5 mb-lg-0">
 
-          <div class="mb-4 pt-5">
-            <h3 class="footer-heading fs-4 mb-2 text-center">Subscríbete al boletín de noticias</h3>
+          <div class="mb-4 pt-5" id="Nosotros">
+            <h3 class="footer-heading fs-4 mb-2 text-center">Contáctanos</h3>
             <div class="pt-3">
-            <p>Si quieres recibir las últimas noticias y promociones suscríbete ahora.</p>
+            <p>Haznos tus comentarios o solicita el boletín de noticias si quieres recibirlo, así como nuestras promociones suscríbete ahora.</p>
 
             <form action="#" method="post">
               <div class="input-group mb-3">
@@ -239,38 +221,9 @@
 
         </div>
         
-      </div>
-      
-        
+      </div>        
       </div>
     </div>
 </footer>
-<!--
-<div class="slogan">
-    <div class="column1">
-        <h2>ABCBlog</h2>
-    </div>
-    <div class="column2">
-        <p>Hemos ayudado a más de 1 millon de personas a crecer profesionalmente. Estos artículos comparten concejos
-            para
-            la búsqueda de empleo, la productividad y el éxito laboral en diferentes áreas del conocimiento.</p>
-    </div>
-</div>
 
-<div class="article-container">
-    <!-- Listar artículos 
-    {% for article in articles %}
-    <article class="article">
-        <!-- Imagen del artículo 
-        <img src="{{ article.image.url }}" alt="" class="img">
-        <div class="card-body">
-            <!-- Identificador del artículo 
-            <a href="{% url 'post' article.slug %}">
-                <h2 class="title">{{ article.title|truncatewords:13 }}</h2>
-            </a>
-            <p class="introduction">{{ article.introduction|truncatewords:25 }}</p>
-        </div>
-    </article>
-    {% endfor %}
-</div> -->
 {% endblock content %}

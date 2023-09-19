@@ -15,9 +15,6 @@
  
     <ul>
 
-        <!-- Redirigir al index
-        <li class="nav-item {% if request.path == '/' %} active {% endif %}"><a href="{% url 'index' %}"></a></li>
-        -->
         <!-- Listar categorías destacadas -->
         <nav  class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -37,19 +34,6 @@
               </div>
             </div>
           </nav>
-
-
-        <!--{% for category in navbar_category %}
-        {% url 'category_detail' category.slug as the_url %}
-        <li class="nav-item {% if request.path == the_url %} active {% endif %}">
-            <a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>
-        </li>
-        {% endfor %} -->
-
-        <!-- Listar todas las categorías
-        <li class="nav-item ">
-            <a href="{% url 'all_categories' %}">Todas las categorias</a>
-        </li> -->
 
     </ul>
 </div>

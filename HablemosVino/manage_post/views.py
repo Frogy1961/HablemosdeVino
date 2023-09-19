@@ -21,7 +21,8 @@ class IndiceView(ListView):
         #Obtener categorias destacadas
         context['navbar_category'] = Category.objects.filter(featured=True)
         return context
-
+        
+        
 class CategoryDetailView(DetailView):
     model = Category
     template_name = 'manage_post/category_detail.html'
@@ -67,9 +68,16 @@ class ShowPostDetailView(FormMixin, DetailView):
     def get_success_url(self):
         return reverse_lazy('post', kwargs={'slug': self.kwargs['slug']})
     
-class IndexView(TemplateView):
-  
+class IndexView(ListView):
+    model=Article
     template_name = 'manage_post/index.html'
 
-    def home():
-        pass
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        #Enviar articulos featured estado=true
+        context['destacados'] = Article.objects.filter(featured=True)
+
+        #Enviar articulos activos estado=true
+        context['articles'] = Article.objects.filter(status=True)
+        return context

@@ -33,6 +33,7 @@ class Article(models.Model):
     body = RichTextField()
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category)
+    featured = models.BooleanField(default=False)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
     status = models.BooleanField(default=True)
