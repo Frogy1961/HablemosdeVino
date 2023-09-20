@@ -19,20 +19,20 @@
                     <a class="nav-link active" aria-current="page" href="#">Inicio</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#Nosotros">Nosotros</a>
+                    <a class="nav-link" href="#nosotros">Nosotros</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Bolg
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Vinos</a></li>
-                      <li><a class="dropdown-item" href="#">Maridajes</a></li>
-                      <li><a class="dropdown-item" href="#">Donde comer</a></li>
+                      <li><a class="dropdown-item" href="{% url 'vinos' %}">Vinos</a></li>
+                      <li><a class="dropdown-item" href="{% url 'maridajes' %}">Maridajes</a></li>
+                      <li><a class="dropdown-item" href="{% url 'lugares' %}">Donde comer</a></li>
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
+                    <a class="nav-link" href="#contacto">Contacto</a>
                   </li>
                 </ul>
                 {% if request.user.is_authenticated %}
