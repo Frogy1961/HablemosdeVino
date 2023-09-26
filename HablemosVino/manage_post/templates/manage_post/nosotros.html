@@ -1,0 +1,36 @@
+<!-- Heredar de base -->
+{% extends 'base/base.html' %}
+
+<!-- Cargar archivos estáticos -->
+{% load static %}
+
+<!-- Bloque css -->
+{% block css %}
+<link rel="stylesheet" href="#">
+{% endblock css %} 
+
+<!-- Bloque título -->
+{% block title %} {{ category.name }} {% endblock title %}
+
+<!-- Bloque contenido -->
+{% block content %}
+
+<div class="container-fluid" id="nosotros" style="border-top:solid rgb(239, 237, 237);">
+  <div class="row">
+    <div class="container-fluid pt-3 pb-5">
+      <h3 class="fs-2 text-center">Sobre Nosotros</h3>
+    </div>
+    <div class="d-flex">
+      <img src="{% static 'base/image/index/Nosotros Vino (500 × 360 px).png' %}" class="d-block w-100" alt="img" style="max-width: 35%;margin: 0 auto;">
+    </div>
+    <div class="container-fluid pt-3 pb-5" style="width: 55rem;">
+      <p class="fs-5 text-center">Espacio abierto para compartir experiencias sobre vinos, maridajes asombrosos y 
+        platillos que no se encuentran en las cartas de los restaurantes. También para recomendar 
+        esos paraísos gastronómicos escondidos que sólo las personas locales conocen en su ciudad, así como bebidas y platillos
+        únicos que llenarán de nuevos olores y sabores cualquier escapada de la rutinia.
+
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

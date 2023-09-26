@@ -81,3 +81,31 @@ class IndexView(ListView):
         #Enviar articulos activos estado=true
         context['articles'] = Article.objects.filter(status=True)
         return context
+    
+class NosotrosView(ListView):
+    model=Article
+    template_name = 'manage_post/nosotros.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        #Enviar articulos featured estado=true
+        context['destacados'] = Article.objects.filter(featured=True)
+
+        #Enviar articulos activos estado=true
+        context['articles'] = Article.objects.filter(status=True)
+
+class ContactoView(ListView):
+    model=Article
+    template_name = 'manage_post/contacto.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        #Enviar articulos featured estado=true
+        context['destacados'] = Article.objects.filter(featured=True)
+
+        #Enviar articulos activos estado=true
+        context['articles'] = Article.objects.filter(status=True)
+
+        

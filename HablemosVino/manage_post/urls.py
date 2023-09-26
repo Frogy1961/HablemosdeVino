@@ -10,4 +10,6 @@ urlpatterns = [
     path('category/vinos', views.CategoryDetailView.as_view(), name='vinos'),
     path('category/lugares-compartidos', views.CategoryDetailView.as_view(), name='lugares'),
     path('category/maridajes', views.CategoryDetailView.as_view(), name='maridajes'),
+    path('nosotros/', views.NosotrosView.as_view(), name='nosotros'),
+    path('contacto/', views.ContactoView.as_view(), name='contacto'),
 ]
