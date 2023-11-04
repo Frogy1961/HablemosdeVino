@@ -17,11 +17,11 @@
 {% else %}
 <hr>
 <div class="form-content">
-    <form method="POST" class="form-general">
-        <h2>Crear Cuenta</h2>
+    <form method="POST" style="box-shadow: 0px 1px 4px grey;width: 50%;align-items: center;padding-right: 5px;">
+        <h2 style="font-size: 1.8em; text-align: center;">Crear Cuenta</h2>
         <!-- Agergar Token -->
         {% csrf_token %}
-        <table>
+        <table class="table table-responsive" style="align-items: center;">
             <!-- Obtener formulario -->
             {{ form.as_table }}
         </table>
